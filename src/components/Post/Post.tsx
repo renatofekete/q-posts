@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { IAuthor, IComments, IPost } from '../../shared/types/interfaces/interfaces'
 
 type TProps = {
@@ -7,10 +9,13 @@ type TProps = {
 }
 
 function Post({author, post, comments}: TProps) {
+  useEffect(() => {
+    console.log("hello from post")
+  }, [])
   return (
     <div>
       <h4>Author: {author?.name}</h4>
-      <h2>Title: {post.title}</h2>
+      <Link to={`/post/${post.id}`}>Title: {post.title}</Link>
       <p>{post.body}</p>
       <ul>
         {comments?.map((comment) => {
