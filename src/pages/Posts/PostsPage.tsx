@@ -6,14 +6,14 @@ import List from '../../components/List/List';
 import Page from '../../components/Page/Page';
 import Filter from '../../components/Filter/Filter';
 
-function PostsPage({message}: {message: string}) {
+function PostsPage({message}: {message: string}): JSX.Element {
+
   const [posts, setPosts] = useState<IPost[]>([]);
   const [filteredPosts, setFilteredPosts] = useState<IPost[]>([]);
   const [comments, setComments] = useState<IComments[]>([]);
   const [users, setUsers] = useState<IUser[]>([]);
   const [filteredValue, setFilteredValue] = useState('')
   
-
   useEffect(() => {
     
     console.log(`${message} PostsPage`)
@@ -47,7 +47,7 @@ function PostsPage({message}: {message: string}) {
     return
   }
 
-  function renderPosts(postsList: IPost[]): any {
+  function renderPosts(postsList: IPost[]): JSX.Element {
     return <List message={message} items={postsList} renderItem={(post: IPost) => {
       return (
         <Post
@@ -83,7 +83,6 @@ function PostsPage({message}: {message: string}) {
         {filteredPosts.length > 0 && <h2>Posts by: {filteredValue}</h2>}        
         {filteredPosts && filteredPosts.length > 0 ? renderPosts(filteredPosts) : renderPosts(posts)}
       </Page>
-    
   );
 }
 export default PostsPage

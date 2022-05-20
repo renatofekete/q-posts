@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import style from './Post.module.css'
 
@@ -14,6 +14,7 @@ type TProps = {
 }
 
 function Post({message, subtitle, content, link, children, title, as, classes}: TProps): JSX.Element {
+
   const El = as || "article"
 
   function getTitle(): React.ReactNode {
@@ -29,7 +30,7 @@ function Post({message, subtitle, content, link, children, title, as, classes}: 
       <h2 className={style.title}>{getTitle()}</h2>
       <h4 className={style.subtitle}>{subtitle}</h4>
       <p>{content}</p>
-        {children}
+      {children}
     </El>
   )
 }

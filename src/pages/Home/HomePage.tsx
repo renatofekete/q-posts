@@ -8,7 +8,7 @@ function HomePage({message}: {message: string}): JSX.Element {
 
   return(
     <Page message={message}>
-      <h1>Hello home</h1>
+      <h1>Home page</h1>
     </Page>
   )
 }

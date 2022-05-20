@@ -10,7 +10,7 @@ type TProps<Item> = {
   id?: string 
 }
 
-function List<Item>({message, items, renderItem, as, classes, title, id}: TProps<Item>) {
+function List<Item>({message, items, renderItem, as, classes, title, id}: TProps<Item>): JSX.Element {
   const El = as || "div"
 
   useEffect(() => {

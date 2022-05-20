@@ -6,7 +6,7 @@ import Post from '../../components/Post/Post';
 import { IUser, IComments, IPost } from '../../shared/types/interfaces/interfaces'
 import styles from './PostPage.module.css'
 
-function PostPage({message}: {message: string}) {
+function PostPage({message}: {message: string}): JSX.Element {
   const [post, setPost] = useState<IPost>();
   const [comments, setComments] = useState<IComments[]>([]);
   const [user, setUser] = useState<IUser>();

@@ -1,16 +1,20 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { IUser } from '../../shared/types/interfaces/interfaces'
 import List from '../List/List'
 
 type TProps = {
   items: IUser[]
-  onClick: (x: string) => void
+  onClick: (search: string) => void
   message: string
 }
 
 function Filter({items, onClick, message}: TProps): JSX.Element {
 
   const [searchTerm, setSearchTerm] = useState<string>("")
+
+  useEffect(() => {
+    console.log(`${message} Filter`)
+  }, [message])
 
   function handleOnChange(e: {target: HTMLInputElement}) {
     setSearchTerm(e.target.value)  

@@ -1,14 +1,15 @@
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import style from './Page.module.css'
 
-function Page(props: any): JSX.Element {
+function Page({children, message}: {children: React.ReactNode, message:string}): JSX.Element {
+
   useEffect(() => {
-    console.log(`${props.message} Page`)
-  }, [props.message])
+    console.log(`${message} Page`)
+  }, [message])
 
   return(
     <div className={style.content}>
-      {props.children}
+      {children}
     </div>
   )
 }
