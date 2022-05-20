@@ -17,13 +17,13 @@ function Post({message, subtitle, content, link, children, title, as, classes}: 
 
   const El = as || "article"
 
-  function getTitle(): React.ReactNode {
-    return link ? <Link to={link}>{title}</Link> : title
-  }
-
   useEffect(() => {
     console.log(`${message} Post`)
   }, [message])
+
+  function getTitle(): React.ReactNode {
+    return link ? <Link to={link}>{title}</Link> : title
+  }
 
   return (
     <El className={`${style.container} ${classes ? classes : ""}`}>

@@ -90,4 +90,5 @@ function PostsPage({message}: {message: string}): JSX.Element {
       </Page>
   );
 }
+
 export default PostsPage

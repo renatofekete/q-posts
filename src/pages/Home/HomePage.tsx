@@ -3,6 +3,7 @@ import Page from '../../components/Page/Page'
 import styling from './HomePage.module.css'
 
 function HomePage({message}: {message: string}): JSX.Element {
+  
   useEffect(() => {
     console.log(`${message} HomePage`)
   }, [message])

@@ -8,6 +8,7 @@ import { IUser, IComments, IPost } from '../../shared/types/interfaces/interface
 import styles from './PostPage.module.css'
 
 function PostPage({message}: {message: string}): JSX.Element {
+  
   const [post, setPost] = useState<IPost>();
   const [comments, setComments] = useState<IComments[]>([]);
   const [user, setUser] = useState<IUser>();
@@ -44,8 +45,6 @@ function PostPage({message}: {message: string}): JSX.Element {
       .catch(e => console.error(e))
       .finally(() => setCommentsAreLoading(false))
 
-      
-    
   }, [id, message])
   
   return (
@@ -69,7 +68,6 @@ function PostPage({message}: {message: string}): JSX.Element {
       </Loader>
     </Page>
   )
-
 }
 
 export default PostPage
