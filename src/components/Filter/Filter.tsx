@@ -1,14 +1,15 @@
 import { useEffect, useState } from 'react'
-import { IUser } from '../../shared/types/interfaces/interfaces'
 import List from '../List/List'
 
-type TProps = {
-  items: IUser[]
+type TProps<Item> = {
+  items: Item[]
+  renderOptions: (item: Item) => React.ReactNode
   onClick: (search: string) => void
   message: string
+  id: string
 }
 
-function Filter({items, onClick, message}: TProps): JSX.Element {
+function Filter<Item>({items, onClick, message, renderOptions, id}: TProps<Item>): JSX.Element {
 
   const [searchTerm, setSearchTerm] = useState<string>("")
 
@@ -27,13 +28,8 @@ function Filter({items, onClick, message}: TProps): JSX.Element {
   return(
     <>
       <div className='filter'>
-          <input type="text" list="user-list" onChange={handleOnChange} value={searchTerm}/>
-          
-          <List id='user-list' as={'datalist'} message={message} items={items} renderItem={(item) => {
-            return(
-              <option key={item.id + item.email} value={item.name}/>  
-            )
-          }}/>
+          <input type="text" list={id} onChange={handleOnChange} value={searchTerm}/>
+          <List id={id} as={'datalist'} message={message} items={items} renderItem={renderOptions}/>
           <button onClick={handleClick}> 
             <svg
               width="24"

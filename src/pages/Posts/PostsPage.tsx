@@ -79,7 +79,7 @@ function PostsPage({message}: {message: string}): JSX.Element {
 
   return (
       <Page message={message}>
-        <Filter message={message} items={users} onClick={filterPosts}/>
+        <Filter id='users-list' message={message} items={users} onClick={filterPosts} renderOptions={(user) => <option key={user.id + user.email} value={user.name} />}/>
         {filteredPosts.length > 0 && <h2>Posts by: {filteredValue}</h2>}        
         {filteredPosts && filteredPosts.length > 0 ? renderPosts(filteredPosts) : renderPosts(posts)}
       </Page>
