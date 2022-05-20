@@ -5,6 +5,7 @@ import Post from '../../components/Post/Post';
 import List from '../../components/List/List';
 import Page from '../../components/Page/Page';
 import Filter from '../../components/Filter/Filter';
+import Loader from '../../components/Loader/Loader';
 
 function PostsPage({message}: {message: string}): JSX.Element {
 
@@ -13,6 +14,7 @@ function PostsPage({message}: {message: string}): JSX.Element {
   const [comments, setComments] = useState<IComments[]>([]);
   const [users, setUsers] = useState<IUser[]>([]);
   const [filteredValue, setFilteredValue] = useState('')
+  const [isLoading, setIsLoading] = useState(true)
   
   useEffect(() => {
     
@@ -31,6 +33,7 @@ function PostsPage({message}: {message: string}): JSX.Element {
         setUsers(data3)
       })
     })
+    .finally(() => setIsLoading(false))
     
   }, [message])
  
@@ -79,9 +82,11 @@ function PostsPage({message}: {message: string}): JSX.Element {
 
   return (
       <Page message={message}>
-        <Filter id='users-list' message={message} items={users} onClick={filterPosts} renderOptions={(user) => <option key={user.id + user.email} value={user.name} />}/>
-        {filteredPosts.length > 0 && <h2>Posts by: {filteredValue}</h2>}        
-        {filteredPosts && filteredPosts.length > 0 ? renderPosts(filteredPosts) : renderPosts(posts)}
+          <Filter list='users-list' message={message} onClick={filterPosts} renderDatalist={<List id={'users-list'} as={'datalist'} message={message} items={users} renderItem={(user) => <option key={user.id + user.email} value={user.name} />}/>}/>
+          <Loader message={message} isLoading={isLoading}>
+            {filteredPosts.length > 0 && <h2>Posts by: {filteredValue}</h2>}        
+            {filteredPosts && filteredPosts.length > 0 ? renderPosts(filteredPosts) : renderPosts(posts)}
+          </Loader>
       </Page>
   );
 }

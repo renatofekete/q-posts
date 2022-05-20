@@ -1,7 +1,12 @@
-import React, { useEffect } from 'react'
+import { ReactNode, useEffect } from 'react'
 import style from './Page.module.css'
 
-function Page({children, message}: {children: React.ReactNode, message:string}): JSX.Element {
+type TProps = {
+  message: string
+  children: ReactNode
+}
+
+function Page({children, message}: TProps): JSX.Element {
 
   useEffect(() => {
     console.log(`${message} Page`)

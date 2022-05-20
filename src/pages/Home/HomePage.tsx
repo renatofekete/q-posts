@@ -8,7 +8,11 @@ function HomePage({message}: {message: string}): JSX.Element {
 
   return(
     <Page message={message}>
-      <h1>Home page</h1>
+      <article>
+        <h1>Home page</h1>
+        <a href='https://github.com/renatofekete/q-posts' target='_blank' rel="noreferrer noopener">Github repository</a>
+        <p>Approximate time needed to finish the assignment: 12h</p>
+      </article>
     </Page>
   )
 }
