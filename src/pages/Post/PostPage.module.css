@@ -1,0 +1,17 @@
+.container {
+  margin-top: 2em;
+}
+
+.title {
+  margin-bottom: 1em;
+  font-weight: 900;
+}
+
+.details {
+  margin-bottom: 1.5em;
+  font-size: 0.7em;
+}
+
+.content {
+  font-size: 1.1em;
+}
